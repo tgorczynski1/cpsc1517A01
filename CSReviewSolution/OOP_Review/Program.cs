@@ -10,6 +10,8 @@ namespace OOP_Review
     {
         static void Main(string[] args)
         {
+
+            Console.ReadLine();
         }
     }
 }
