@@ -22,7 +22,7 @@ namespace OOP_Review
             //   class will not create a physical instance, just a 
             //   a pointer which can hold a physical instance
             Turn theTurn; // no physical instance, storage is null 
-
+            List<Turn> rounds = new List<Turn>();
             //new cause the constructor of a class to execute
             //   and a phyiscal instance to be created
 
@@ -81,6 +81,7 @@ namespace OOP_Review
                                 }
 
                                 //track the round
+                                rounds.Add(theTurn);
                                 break;
                             }
                         case "B":
@@ -144,7 +145,7 @@ namespace OOP_Review
             } while (menuChoice.ToUpper() != "X");
         }//eomain
 
-        public static void DisplayCurrentPlayerStats(?????)
+        public static void DisplayCurrentPlayerStats(List<Turn> )
         {
 
             int wins1 = 0;
@@ -152,7 +153,18 @@ namespace OOP_Review
             int draws = 0;
 
             //travser the List<Turn> to calculate wins, losses, and draws
+            foreach(Turn item in rounds)
+            {
+                if (item.Player1 > item.Player2)
+                {
+                    wins1 = wins1 + 1 
+                }
+                else
+                {
 
+                }
+
+            }
 
             //display the results
             Console.WriteLine("\n Total Rounds: " + (wins1 + wins2 + draws).ToString());
