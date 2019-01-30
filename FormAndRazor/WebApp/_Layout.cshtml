@@ -10,9 +10,11 @@
 </head>
 <body>
     <div class="container-fluid">
-    <div class="jumbotron">
-         @RenderSection("banner")
-    </div>
+        @RenderPage("~/_Menu.cshtml")
+        <br />
+        <div class="jumbotron">
+            @RenderSection("banner")
+        </div>
     @RenderBody()
     <hr style="height:5px" />
     <hr style="height:5px" />
