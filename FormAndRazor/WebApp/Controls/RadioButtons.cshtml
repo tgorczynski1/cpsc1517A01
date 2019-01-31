@@ -3,6 +3,7 @@
     Page.Title = "RadioButtons";
     var language = Request.Form["languagegroup"];
     var script = Request.Form["scriptgroup"];
+    var thebutton = Request.Form["formbutton"];
     // the first time through language and script will be null
     // this will cause a problem on the check for radio button
     // test that retains the radiobutton selection
@@ -24,28 +25,38 @@
 
 @if (IsPost)
 {
-    //demonstration validation is possible
-    if (string.IsNullOrEmpty(language) || string.IsNullOrEmpty(script))
+    //decide which button pressed 
+    if (thebutton.Equals("Clear"))
     {
-        <p><span style="color:firebrick"><strong> Choose from both language and scripting</strong></span></p>
+        language = "";
+        script = "";
     }
     else
     {
-        if (language.Equals("C#"))
+
+        //demonstration validation is possible
+        if (string.IsNullOrEmpty(language) || string.IsNullOrEmpty(script))
         {
+        <p><span style="color:firebrick"><strong> Choose from both language and scripting</strong></span></p>
+        }
+        else
+        {
+            if (language.Equals("C#"))
+            {
             <p>You will greatly enjoy CPSC1517 because we use C#.</p>
-        }
-        else
-        {
+            }
+            else
+            {
             <p>C# NUMBA 1, USE OR LOSE!!</p>
-        }
-        if (script.Equals("Razor"))
-        {
+            }
+            if (script.Equals("Razor"))
+            {
             <p>You will greatly enjoy CPSC1517 because we use Razor.</p>
-        }
-        else
-        {
+            }
+            else
+            {
             <p>RAZOR NUMBA 1, USE OR LOSE!!</p>
+            }
         }
     }
 }
@@ -77,7 +88,8 @@
     </div>
     <div class="row">
         <div class="col-md-offset-1">
-            <button type="submit" id="formbutton" name="formbutton" value="submit" class="btn"> submit</button>
+            <button type="submit" id="formbutton" name="formbutton" value="submit" class="btn"> submit</button>&nbsp;&nbsp;
+            <button type="submit" id="formbutton" name="formbutton" value="clear" class="btn"> clear</button>
         </div>
     </div>
 </form>
