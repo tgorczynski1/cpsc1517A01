@@ -3,67 +3,88 @@
     Page.Title = "Single Query";
 
     var searcharg = Request.Form["searcharg"];
-    var description = "";
     var regionid = "";
-    // remember the 1st pass, your incoming data value will be null because the from has yet to be displayed
+    var description = "";
+    var thebutton = Request.Form["formbutton"];
+
+    //remember the 1st pass, your incoming data value will be null
+    //    because the form has yet to be displayed
     if (string.IsNullOrEmpty(searcharg))
     {
         searcharg = "0";
     }
 
-    // we need to connect to the database which has the data
-    // we need to know the connection string name to this database 
+    //we need to connect to the database which has the data
+    //we need to know the connection string name to this database
     var db = Database.Open("NWDB");
 
-    //create the command that will be sent to the database 
-    // you can code your commands over multiple physical lines
-    //argument values will be indicated in your command using placeholders (@n where n is an index)
+    //create the command that will be sent to the database
+    //you can code your commands over multiple physical lines
+    //argument values will be indicated in your command using
+    //     placeholders (@n where n is an index)
     var querycommand = "SELECT RegionID, RegionDescription "
                         + "FROM Region "
                         + "WHERE RegionID = @0";
 
-    //execute the command and obtain the results 
-    // placeholders will be given values during this process 
-    //order of values for placeholders is important 
-    //.QuerySingle() used when you expect a single record to be returned 
-    //.Query() used when you expect 0, 1 or more records to be returned 
-    //.QueryValues() used when a single value (NOT RECORD) is to be returned 
-
+    //execute the command and obtain the results
+    //placeholders will be given values during this process
+    //order of values for placeholders is important
+    //.QuerySingle() used when you expect a single record to be returned
+    //.Query() used when you expect 0, 1 or more records to be returned
+    //.QueryValue() used when a single value (NOT REOCORD) is to be returned
     var results = db.QuerySingle(querycommand, searcharg);
-
 }
-    
-    
+@section banner{
+    <h1>DataBase: Single Query</h1>
+}
 
-@section banner
+@if (IsPost)
 {
-    <h1> Database: Single Query</h1>
+    //determine submit button pressed
+    if (thebutton.Equals("clear"))
+    {
+        searcharg = "0";
+        regionid = "";
+        description = "";
+    }
 }
+else
+{
+
+}
+
 
 <form id="theform" method="post">
     <div class="row">
         <div class="col-md-4">
-            <label for="searcharg">Enter Region ID: </label>
-            <input type="text" id="searcharg" name="searcharg" placeholder="enter region id" value="@searcharg" />
+            <label for="searcharg">Enter Region ID:</label>
+            <input type="number" id="searcharg" name="searcharg"
+                   placeholder="enter region id" step="1" min="0"
+                   value="@searcharg" />
             <br />
-            <button type="submit" id="formbutton" name="formbutton" value="search" class="btn btn-primary">Search</button>
+            <button type="submit" id="formbutton" name="formbutton"
+                    value="search" class="btn btn-primary">
+                Search
+            </button>
             &nbsp;&nbsp;
-            <button type="submit" id="formbutton" name="formbutton" value="clear" class="btn">Clear</button>
+            <button type="submit" id="formbutton" name="formbutton"
+                    value="clear" class="btn">
+                Clear
+            </button>
         </div>
         <div class="col-md-8">
-            <label for="regionid">Enter Region ID: </label>
-            <input type="text" id="regionid" name="regionid" value="@regionid" />
+            <label for="regionid">Region ID:</label>
+            <input type="text" id="regionid" name="regionid"
+                   value="@regionid" />
             <br />
-            <label for="description">Enter Region ID: </label>
-            <input type="text" id="description" name="description" value="@description" />
+            <label for="description">Region Name:</label>
+            <input type="text" id="description" name="description"
+                   value="@description" />
             <br />
-
         </div>
     </div>
 </form>
 
-
-@section footer
-{
+@section footer{
     &copy; CPSC1517 Nait 2019, all rights reserved
 }

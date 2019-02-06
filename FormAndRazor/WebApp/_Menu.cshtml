@@ -9,30 +9,32 @@
     <ul class="nav navbar-nav">
         <!-- menu root item-->
         <li><a href="@Href("~/default.cshtml")">Home</a></li>
-        <!-- dropdown menu (submenu) -->
-        <li class="dropdown">
-            <!-- place the dropdown root menu item at the root-->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                DB Pages <b class="caret"></b>
-            </a>
+        <!--  dropdown menu (submenu) -->
         <li class="dropdown">
             <!-- place the dropdown root menu item at the root-->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Controls <b class="caret"></b>
             </a>
-            <!-- this unordered list is the dropdown menu -->
+            <!-- this unorderlist is the dropdown menu-->
             <ul class="dropdown-menu">
                 <li><a href="@Href("~/Controls/TextBoxes.cshtml")">TextBoxes</a></li>
-                <li><a href="@Href("~/Controls/RadioButtons.cshtml")">Radio Buttons</a></li>
+                <li><a href="@Href("~/Controls/RadioButtons.cshtml")">RadioButtons</a></li>
                 <li><a href="@Href("~/Controls/CheckBoxes.cshtml")">CheckBoxes</a></li>
-                <li><a href="@Href("~/Controls/DropDown.cshtml")">Dropdown (select)</a></li>
+                <li><a href="@Href("~/Controls/DropDown.cshtml")">DropDown (select)</a></li>
             </ul>
-        
-        <!-- this unordered list is the dropdown menu -->
-        @*<ul class="dropdown-menu">
-            <li><a href="@Href("~/DBPages/SingleQuery.cshtml")">TextBoxes</a></li>
-        </ul>*@
+        </li>
+
+        <!--  dropdown menu (submenu) -->
+        <li class="dropdown">
+            <!-- place the dropdown root menu item at the root-->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                DB Pages <b class="caret"></b>
+            </a>
+            <!-- this unorderlist is the dropdown menu-->
+            <ul class="dropdown-menu">
+                <li><a href="@Href("~/DBPages/SingleQuery.cshtml")">Single Query</a></li>
+
+            </ul>
         </li>
     </ul>
-  
 </div>
