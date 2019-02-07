@@ -46,17 +46,13 @@
         var querycommand = "SELECT ProductID "
                         + "FROM Products "
                         + "WHERE CategoryID = @0";
-
         var results = db.Query(querycommand, categorylist);
 
-
         //check the results of the query
-
         if (results.Count() == 0)
         {
             //empty results code here
-            <p><span style="color:blue">No products for the select category. Make a different choice.</span></p>
-
+            <p><span style="color:blue">No  products for the select category. Make a different choice.</span></p>
         }
         else
         {
@@ -68,7 +64,7 @@
             //multiple arguments are separated by a &
             //this uses the Get posting so the value will appear
             //   on the url
-            Response.Redirect("MultiRecordWebGrid.cshtml?cid=" + 
+            Response.Redirect("MultiRecordWebGrid.cshtml?cid=" +
                 categorylist);
         }
     }
@@ -86,13 +82,12 @@
                          .CategoryName*@
             <select id="categorylist" name="categorylist">
                 <option value="0">select ...</option>
-                @foreach (var catitems in ddlResults)
+                @foreach (var catitem in ddlResults)
                 {
-                    <option>                    
-                        @catitems[1];
+                    <option value="@catitem.CategoryID">
+                        @catitem[1]
                     </option>
                 }
-
 
             </select>
             &nbsp;&nbsp;

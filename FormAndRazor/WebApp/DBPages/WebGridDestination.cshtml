@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "PID";
+
+    //access the argument label from the sending page using .QueryString["xxx"]
+    //QueryString returns either null (if argument did not exists) or
+    //   a string value
+    var pid = Request.QueryString["pid"];
+}
+
+@section banner{
+    <h1>View Item</h1>
+}
+<p>You passed the value @pid</p>
