@@ -2,6 +2,8 @@
     Page.Title = "Product Edit";
     Layout = "~/_Layout.cshtml";
 
+
+
     var pid = Request.QueryString["pid"];
     if (pid.IsEmpty())
     {
@@ -69,9 +71,7 @@
         //d) display a message suggesting some type of action
         <p>
             <span style="color:indianred">
-                Action cancel. Return to
-                <a href="~/DBPages/ProductSearch.cshtml">search product</a>
-                for another product
+                Action cancel. Return to <a href="~/DBPages/ProductSearch.cshtml">search product</a> for another product.
             </span>
         </p>
     }
@@ -81,9 +81,7 @@
         {
             <p>
                 <span style="color:indianred">
-                    No product ID. Try a different
-                    <a href="~/DBPages/ProductSearch.cshtml">search product</a>
-                    for another product
+                    Return to <a href="~/DBPages/ProductSearch.cshtml">search product</a> for another product.
                 </span>
             </p>
         }
@@ -91,46 +89,40 @@
         {
             try
             {
-                //not all records are physically removed on a delete 
-                //the database stucture may have a flag on an entity to indicate 
-                //if the record is active or not 
-                //for the product entity, there is a discontinued attribute
-                //the product record should not be physically removed
+                //not all records are physically removed on a delete
+                //the database structure may have a flag on an entity
+                //    to indicate if the record is active or not
+                //for the Product entity, there is a Discontinued attribute
+                //the Product record should not be physcially removed
                 //the delete action should actually be an update
-                //the update should ONLY alter the discontinued attribute 
-                //      and automatically update it to "true'
+                //the update should ONLY alter the discontinued attribute
+                //     and automatically update it to "true"
 
-                //connect to DB: done
+
+                //connect to DB :done
                 //command
                 var deletecommand = "DELETE Products WHERE ProductID = @0";
-                //execute: .Execute() returns the number of rows affected
+                //execute:  .Execute() returns the number of rows affected
                 var rowsaffected = db.Execute(deletecommand, productid);
                 if (rowsaffected == 0)
                 {
-                    productid = "";
-                    //optionally you could empty the datafields
                     <p>
                         <span style="color:indianred">
-                            Record not found. Return to
-                            <a href="~/DBPages/ProductSearch.cshtml">search product</a>
-                            for another product
+                            Record not found. Return to <a href="~/DBPages/ProductSearch.cshtml">search product</a> for another product.
                         </span>
                     </p>
                 }
                 else
                 {
-                    productid = "";
-                    //optionally you could empty the datafields
+
                     <p>
                         <span style="color:indianred">
-                            Record removed. Return to
-                            <a href="~/DBPages/ProductSearch.cshtml">search product</a>
-                            for another product
+                            Record removed. Return to <a href="~/DBPages/ProductSearch.cshtml">search product</a> for another product.
                         </span>
                     </p>
                 }
                 productid = "";
-                //optionally you could empty the datafields
+                //optionally you could empty the data fields
             }
             catch (Exception ex)
             {
@@ -148,9 +140,7 @@
         {
             <p>
                 <span style="color:indianred">
-                    No product ID. Try a different
-                    <a href="~/DBPages/ProductSearch.cshtml">search product</a>
-                    for another product
+                    Return to <a href="~/DBPages/ProductSearch.cshtml">search product</a> for another product.
                 </span>
             </p>
         }
@@ -158,56 +148,48 @@
         {
             try
             {
-                //connect to DB: done at top
+                //connect to DB :done
                 //command
-                var updatecommand = "UPDATE Products SET " +
-                                "ProductName = @0 " +
-                                "SupplierID = @1 " +
-                                "CategoryID = @2 " +
-                                "QuantityPerUnit = @3 " +
-                                "UnitPrice = @4 " +
-                                "UnitsInStock = @5 " +
-                                "UnitsOnOrder = @6 " +
-                                "ReorderLevel = @7 " +
-                                "Discontinued = @8 " +
-                                "WHERE ProductID = @9";
-                //execute: .Execute() returns the number of rows affected
-                var rowsaffected = db.Execute(updatecommand, productname,
-                supplierid.Equals("0") ? null : supplierid,
+                var updatecommand = "UPDATE Products SET "
+                            + "ProductName = @0, "
+                            + "SupplierID = @1, "
+                            + "CategoryID = @2, "
+                            + "QuantityPerUnit = @3, "
+                            + "UnitPrice = @4, "
+                            + "UnitsInStock = @5, "
+                            + "UnitsOnOrder = @6, "
+                            + "ReorderLevel = @7, "
+                            + "Discontinued = @8 "
+                            + "WHERE ProductID = @9";
+                //execute:  .Execute() returns the number of rows affected
+                var rowsaffected = db.Execute(updatecommand,
+                    productname,
+                    supplierid.Equals("0") ? null : supplierid,
                 categoryid.Equals("0") ? null : categoryid,
                 string.IsNullOrEmpty(quantityperunit) ? null : quantityperunit,
                 string.IsNullOrEmpty(unitprice) ? null : unitprice,
                 string.IsNullOrEmpty(unitsinstock) ? null : unitsinstock,
                 string.IsNullOrEmpty(unitsonorder) ? null : unitsonorder,
                 string.IsNullOrEmpty(reorderlevel) ? null : reorderlevel,
-                discontinued, productid
-                    );
+                discontinued, productid);
                 if (rowsaffected == 0)
                 {
                     productid = "";
-                    //optionally you could empty the datafields
                     <p>
                         <span style="color:indianred">
-                            Record Updated. Return to
-                            <a href="~/DBPages/ProductSearch.cshtml">search product</a>
-                            for another product
+                            Record not found. Return to <a href="~/DBPages/ProductSearch.cshtml">search product</a> for another product.
                         </span>
                     </p>
                 }
                 else
                 {
-                    productid = "";
-                    //optionally you could empty the datafields
+
                     <p>
                         <span style="color:indianred">
-                            Record removed. Return to
-                            <a href="~/DBPages/ProductSearch.cshtml">search product</a>
-                            for another product
+                            Record updated.
                         </span>
                     </p>
                 }
-                productid = "";
-                //optionally you could empty the datafields
             }
             catch (Exception ex)
             {
@@ -220,7 +202,7 @@
         }
     }
 }
-else //for  : initialization
+else //for IsPost: initialization
 {
     //if this page is being shown for the "first time"
     //the page accesses the database for the current record
@@ -309,11 +291,10 @@ else //for  : initialization
             <button type="submit" name="theButton" id="theDelete" class="btn btn-primary" value="delete">Delete</button>&nbsp;&nbsp;&nbsp;
             <button type="submit" name="theButton" id="theCancel" class="btn btn-primary" value="cancel">Cancel</button>
         </div>
-        @*this script will handle the delete confirmation*@
+        @* this script will handle the delete confirmation*@
         <script type="text/javascript">
             document.getElementById("theDelete").onclick = ConfirmDelete;
-            function ConfirmDelete()
-            {
+            function ConfirmDelete() {
                 return confirm("Are you sure you want to remove @productname?");
             }
         </script>

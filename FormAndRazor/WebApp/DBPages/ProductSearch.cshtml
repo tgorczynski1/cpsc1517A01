@@ -11,19 +11,19 @@
                         + "FROM Products "
                         + "WHERE ProductName like @0 "
                         + "ORDER BY ProductName";
-   
+
 }
 @section banner{
     <h1>Product Search</h1>
 }
 <div class="form-group">
-  
+
     <form id="theForm" action="" method="post">
         <div class="col-sm-3">
-            <label id="forProductSearch">Product Partial Name</label><br/>
-            <input type="text" name="ProductSearch" value=" @productsearch"><br/><br/>
+            <label id="forProductSearch">Product partial name</label><br />
+            <input type="text" name="ProductSearch" value=" @productsearch"><br /><br />
             <button type="submit" class="btn btn-primary" name="Search" id="theSearch">Search</button>
-                    
+
         </div>
         <div class="col-sm-8">
             @if (IsPost)
@@ -53,15 +53,15 @@
                         grid.Column(columnName: "UnitPrice", header: "$"),
                         grid.Column(columnName: "UnitsInStock", header: "UOS"),
                         grid.Column(header:"", format:@<text><a href="~/DBPages/ProductEdit.cshtml?pid=@item.ProductID">Edit</a></text>)
-                        ));
+                         ));
                     }
                 }
             }
         </div>
-      @*Since the webgrid uses the get method for paging, we have a conflict with 
-          our form, which uses the post method
-        the following script will handle the conversion of the get from webgrid into 
-          a post for the form*@
+        @* Since the webgrid uses the get method for paging, we have a
+               conflict with our form which uses the post method
+            the following script will handling the conversion of the get
+               from webgrid into a post for the form*@
         <script type="text/javascript">
             var links = $('a[href*=page], a[href*=sort]'), form = $('form');
             links.click(function () {
