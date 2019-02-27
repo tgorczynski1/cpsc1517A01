@@ -229,33 +229,33 @@
                 <input name="ReorderLevel" id="ReorderLevel" type="text" value="@reorderlevel"
                        title="Reorder Level." /><br />
                 @*HTML validation on the controls; client side(browser)
-                <input name="UnitPrice" id="UnitPrice" type="number" value="@unitprice"
-                   step="0.01" min="0.00" /><br />
-            <input name="UnitsInStock" id="UnitsInStock" type="number" value="@unitsinstock"
-                   step="1" min="0" title="Quantity on Hand." /><br />
-            <input name="UnitsOnOrder" id="UnitsOnOrder" type="text" value="@unitsonorder"
-                   step="1" min="0" title="Quantity on Order." /><br />
-            <input name="ReorderLevel" id="ReorderLevel" type="text" value="@reorderlevel"
-                   step="1" min="0" title="Reorder Level." /><br />*@
+                        <input name="UnitPrice" id="UnitPrice" type="number" value="@unitprice"
+                           step="0.01" min="0.00" /><br />
+                    <input name="UnitsInStock" id="UnitsInStock" type="number" value="@unitsinstock"
+                           step="1" min="0" title="Quantity on Hand." /><br />
+                    <input name="UnitsOnOrder" id="UnitsOnOrder" type="text" value="@unitsonorder"
+                           step="1" min="0" title="Quantity on Order." /><br />
+                    <input name="ReorderLevel" id="ReorderLevel" type="text" value="@reorderlevel"
+                           step="1" min="0" title="Reorder Level." /><br />*@
                 <input name="Discontinued" id="Discontinued" type="checkbox"
                        title="Product is discontinued if checked."
                        @(string.IsNullOrEmpty(discontinued) ? "" : "checked") /><br /><br />
             </div>
-    </div>
-    <div>
-        <div class="col-sm-11 text-center">
-            <button type="submit" name="formButton" value="submit"
-                    class="btn btn-primary" style="width:90px">
-                Add
-            </button>&nbsp;&nbsp;
-            @*the attribute formnovalidate suppresses validation which that particular button is pressed*@
-            <button type="submit" name="formButton" value="reset"
-                    class="btn " style="width:90px" formnovalidate>
-                Clear
-            </button>
         </div>
-    </div>
-</form>
-@section footer{
-    &copy; CPSC1517 Nait, all rights reserved
-}
+        <div>
+            <div class="col-sm-11 text-center">
+                <button type="submit" name="formButton" value="submit"
+                        class="btn btn-primary" style="width:90px">
+                    Add
+                </button>&nbsp;&nbsp;
+                @*the attribute formnovalidate suppresses validation which that particular button is pressed*@
+                <button type="submit" name="formButton" value="reset"
+                        class="btn " style="width:90px" formnovalidate>
+                    Clear
+                </button>
+            </div>
+        </div>
+    </form>
+    @section footer{
+        &copy; CPSC1517 Nait, all rights reserved
+    }
