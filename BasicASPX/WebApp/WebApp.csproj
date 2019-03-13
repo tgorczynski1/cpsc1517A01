@@ -198,6 +198,7 @@
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="appformclass.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
