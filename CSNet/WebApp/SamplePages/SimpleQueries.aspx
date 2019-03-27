@@ -4,27 +4,33 @@
     <table align="center" style="width: 80%">
         <tr>
             <td align="right">
-                <asp:Label ID="Label1" runat="server" Text="Enter a Product ID:"></asp:Label>&nbsp;</td>
+                <asp:Label ID="Label1" runat="server" Text="Enteer a Product ID:"></asp:Label>&nbsp;
+                <asp:TextBox ID="SearchArg" runat="server"></asp:TextBox>
+            </td>
             <td>
-                <asp:TextBox ID="SearchArg" runat="server"></asp:TextBox>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label2" runat="server" Text="Product ID:"></asp:Label>&nbsp;</td>
-            <td>&nbsp;<asp:Label ID="ProductID" runat="server" ></asp:Label></td>
+                <asp:Label ID="Label2" runat="server" Text="Product ID:"></asp:Label>&nbsp;
+                <asp:Label ID="ProductID" runat="server" ></asp:Label>
+            </td>
         </tr>
         <tr>
             <td align="right">
                 <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_Click" />&nbsp;
-                <asp:Button ID="Clear" runat="server" Text="Clear" CausesValidation="false" OnClick="Clear_Click" /></td>
+                <asp:Button ID="Clear" runat="server" Text="Clear"
+                     CausesValidation="false" OnClick="Clear_Click"/>
+            </td>
             <td>
                 <asp:Label ID="Label4" runat="server" Text="Name:"></asp:Label>&nbsp;
-                <asp:Label ID="ProductName" runat="server" ></asp:Label></td>
+                <asp:Label ID="ProductName" runat="server" ></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <asp:Label ID="MessageLabel" runat="server" ></asp:Label></td>
-            <td>&nbsp;</td>
+                <asp:Label ID="MessageLabel" runat="server"></asp:Label></td>
+           
         </tr>
     </table>
 </asp:Content>
