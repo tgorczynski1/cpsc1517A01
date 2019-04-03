@@ -50,6 +50,12 @@
     <Compile Include="Views\EmployeeOfTerritory.cs" />
     <Compile Include="Views\SupplierCategories.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\bootwrap-freecode.css" />
+    <Content Include="Scripts\bootwrap-freecode.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

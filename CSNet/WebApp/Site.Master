@@ -62,6 +62,9 @@
                         <li><a runat="server" href="~/SamplePages/FilterSearches">
                             Filter Searches
                             </a></li>
+                        <li><a runat="server" href="~/SamplePages/ProductCRUD">
+                            Product CRUD
+                            </a></li>
                     </ul>
                 </div>
             </div>

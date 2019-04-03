@@ -63,7 +63,10 @@
       <Name>NorthwindSystem.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\bootwrap-freecode.css" />
+    <Content Include="Scripts\bootwrap-freecode.js" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
