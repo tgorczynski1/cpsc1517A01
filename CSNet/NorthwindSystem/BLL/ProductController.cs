@@ -169,6 +169,69 @@ namespace NorthwindSystem.BLL
                 return item.ProductID;
             }
         }
+
+        //the update will receive an instance of <T>
+        //the instance will have the pkey value 
+        //the commit will return the number of rows affected 
+        public int Product_Update (Product item)
+        {
+            using (var context = new NorthwindContext())
+            {
+                //optional:
+                //there could be an attribute(s) on your table 
+                //      that tracks alternations to the database
+                //      record such as date of change, security id
+                //      of person making the change
+                //let us assume that there is an attribute on 
+                //      the record which records the update date
+                //item.LastModified = DateTime.Now;
+                //staging
+                //this update approach will update the entire
+                //      record on the data that matches the pkey value of the instance
+                context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                //commit 
+                //the execution returns the number of rows affected 
+                return context.SaveChanges();
+            }
+                     
+        }
+
+        //Delete 
+        //physical: will remove the record physically from the database
+        //logical: will usually set an attribute on the database record
+        //      indicating that the record should be ignored in
+        //      normal processing
+        //input: only the pkey value is required
+        //output: number of rows affected
+        public int Product_Delete (int productid)
+        {
+            using(var context = new NorthwindContext())
+            {
+                //physical 
+                //find record on database to delete
+                //var existing = context.Products.Find(productid);
+                ////remove the physical instance (staging)
+                //context.Products.Remove(existing);
+                ////commit
+                //return context.SaveChanges();
+
+                //logical
+                //find record on database to "delete"
+                var existing = context.Products.Find(productid);
+
+                //staging
+                //the attribute used to flag the records
+                //      as a logical delete SHOULD be set by
+                //      the controller method and NOT be relied
+                //      upon by the used
+                existing.Discontinued = true;
+                //existing.LastModified = DateTime.Now; as in update
+                //the staging for a logical delete is actually an update
+                context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+                //commit
+                return context.SaveChanges();
+            }
+        }
         #endregion
     }//end of class [edc]
 }//end of namespace [eon]
